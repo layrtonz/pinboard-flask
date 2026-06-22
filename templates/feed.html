@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% include "navbar.html" %}
+
+<div class="busca-container">
+    <input
+        type="text"
+        id="buscaUsuario"
+        placeholder="Buscar usuários..."
+        autocomplete="off"
+    >
+
+    <div id="sugestoesUsuarios" class="sugestoes"></div>
+</div>
+
+<div class="feed-container">
+
+    {% for foto in fotos %}
+    <a href="{{ url_for('perfil', id_usuario=foto.id_usuario)}}" class="post">
+        <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}">
+    </a>
+    {% endfor %}
+
+</div>
+
+<script>
+const usuarios = [
+    {% for usuario in usuarios %}
+    {
+        username: "{{ usuario.username }}",
+        perfil: "{{ url_for('perfil', id_usuario=usuario.id) }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+const input = document.getElementById("buscaUsuario");
+const sugestoes = document.getElementById("sugestoesUsuarios");
+
+input.addEventListener("input", function() {
+    const texto = this.value.toLowerCase();
+
+    sugestoes.innerHTML = "";
+
+    if (texto.length === 0){
+        return;
+    }
+
+    usuarios
+        .filter(usuario =>
+            usuario.username.toLowerCase().includes(texto)
+        )
+        .forEach(usuario => {
+            sugestoes.innerHTML += `
+                <a href="${usuario.perfil}" class="sugestao-usuario">
+                    ${usuario.username}
+                </a>
+            `;
+        });
+});
+</script>
+
+{% endblock %}

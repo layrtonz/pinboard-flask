@@ -1,0 +1,11 @@
+<div class="navbar-links">
+    <a href="{{ url_for('feed') }}" class="nav-btn">Feed</a>
+
+    <a href="{{ url_for('perfil', id_usuario=current_user.id) }}" class="nav-btn">
+        Perfil
+    </a>
+
+    <a href="{{ url_for('logout') }}" class="nav-btn sair">
+        Sair
+    </a>
+</div>
