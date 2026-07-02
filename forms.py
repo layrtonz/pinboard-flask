@@ -1,6 +1,6 @@
 # formularios do site
 from flask_wtf import FlaskForm
-from wtforms import SearchField, PasswordField, SubmitField, FileField
+from wtforms import SearchField, PasswordField, SubmitField, FileField, TextAreaField, StringField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from FakePinterest.models import Usuario
 
@@ -24,3 +24,9 @@ def validate_email(self, email):
 class FormFoto(FlaskForm):
     foto = FileField("Foto", validators=[DataRequired()])
     botao_confirmacao = SubmitField("Enviar")
+
+class FormEditarPerfil(FlaskForm):
+    username = StringField('Nome de Usuário', validators=[DataRequired()])
+    bio = TextAreaField('Bio')
+    foto_perfil = FileField('Foto de Perfil')
+    botao_submit = SubmitField('Salvar alterações')

@@ -7,22 +7,69 @@
 {% block body %}
     {% include "navbar.html" %}
 
-    <h1>Perfil de usuário: {{ usuario.username }}</h1>
+    <div class="perfil-header">
 
-    {% if form %}
-    <form method="POST" enctype="multipart/form-data">
-        {{ form.csrf_token }}
+        <img
+            src="{{ url_for('static', filename='fotos_perfil/{}'.format(usuario.foto_perfil)) }}"
+            class="foto-perfil"
+        >
 
-        {{ form.foto() }}
-        {{ form.botao_confirmacao() }}
-    </form>
-    {% endif %}
+        <h1 class="nome-usuario">{{ usuario.username }}</h1>
 
-    <div class="feed-container">
-        {% for foto in usuario.fotos %}
-        <a href="{{ url_for('perfil', id_usuario=foto.id_usuario) }}" class="post">
-            <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}">
-        </a>
-        {% endfor %}
+        {% if usuario.bio %}
+            <p class="bio">{{ usuario.bio }}</p>
+        {% endif %}
+
+        <p class="publicacoes">{{ usuario.fotos|length }} publicações</p>
+
+        {% if current_user.id == usuario.id %}
+            <div class="acoes-perfil">
+
+                <a href="{{ url_for('editar_perfil') }}" class="btn-editar-perfil">
+                    Editar perfil
+                </a>
+
+                {% if form %}
+                    <form method="POST" enctype="multipart/form-data" class="form-upload">
+                        {{ form.csrf_token }}
+
+                        <label for="foto" class="btn-escolher">
+                            Escolher imagem
+                        </label>
+
+                        {{ form.foto(id="foto", class="input-upload") }}
+
+                        {{ form.botao_confirmacao(class="btn-upload") }}
+                    </form>
+                {% endif %}
+
+            </div>
+        {% endif %}
+
     </div>
+
+<div class="feed-container">
+    {% for foto in usuario.fotos %}
+        <div class="post post-perfil">
+
+            <a href="{{ url_for('perfil', id_usuario=foto.id_usuario) }}">
+                <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}">
+            </a>
+
+            {% if current_user.id == usuario.id %}
+                <form method="POST"
+                      action="{{ url_for('excluir_foto', id_foto=foto.id) }}"
+                      class="form-excluir-foto">
+
+                    <button type="submit" class="btn-excluir-foto" title="Excluir foto">
+                        <i class="bi bi-trash3-fill"></i>
+                    </button>
+
+                </form>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

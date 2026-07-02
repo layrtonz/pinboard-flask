@@ -119,6 +119,13 @@ nav {
     break-inside: avoid;
 }
 
+.feed-geral .post {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    break-inside: avoid;
+}
+
 .post img {
     width: 100%;
     border-radius: 16px;
@@ -173,6 +180,8 @@ nav {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-left: 30px;
+    padding-top: 15px;
 }
 
 .nav-btn{
@@ -200,4 +209,562 @@ nav {
 .nav-btn.ativo{
     background-color: black;
     color: white;
+}
+
+/* ---------- PERFIL ---------- */
+
+.perfil-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    width:100%;
+    max-width:700px;
+
+    margin:40px auto;
+}
+
+.foto-perfil{
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:5px solid white;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+}
+
+.nome-usuario{
+    margin-top:18px;
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#111;
+}
+
+.bio{
+    margin-top:10px;
+
+    width:80%;
+
+    color:#666;
+    font-size:16px;
+    line-height:1.5;
+}
+
+.publicacoes{
+    margin-top:14px;
+
+    font-size:15px;
+    font-weight:600;
+
+    color:#555;
+}
+
+.acoes-perfil{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:22px;
+    flex-wrap:wrap;
+}
+
+.btn-editar-perfil{
+    margin-top:0;
+    padding:12px 24px;
+    background:#e60023;
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.btn-editar-perfil:hover{
+    background:#b6001c;
+    transform:scale(1.05);
+}
+
+.form-upload{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+}
+
+.input-upload::file-selector-button{
+    border:none;
+    border-radius:30px;
+    padding:12px 18px;
+    background:#efefef;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.input-upload::file-selector-button:hover{
+    background:#ddd;
+}
+
+.btn-upload{
+    background:#111;
+    color:white;
+    border:none;
+    border-radius:30px;
+    padding:12px 20px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.btn-upload:hover{
+    background:#333;
+    transform:scale(1.05);
+}
+
+.input-upload{
+    font-size:14px;
+}
+
+/* Coloque logo aqui embaixo */
+
+.input-upload::file-selector-button{
+    border:none;
+    border-radius:30px;
+    padding:12px 18px;
+    background:#efefef;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.input-upload::file-selector-button:hover{
+    background:#ddd;
+}
+
+.input-upload{
+    font-size:14px;
+}
+
+.input-upload::file-selector-button{
+    border:none;
+    border-radius:30px;
+    padding:12px 18px;
+    background:#efefef;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.input-upload::file-selector-button:hover{
+    background:#ddd;
+}
+
+.btn-upload{
+    background:#111;
+    color:white;
+    border:none;
+    border-radius:30px;
+    padding:12px 20px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.btn-upload:hover{
+    background:#333;
+    transform:scale(1.05);
+}
+
+.input-upload{
+    display: none;
+}
+
+.btn-escolher{
+    background: #efefef;
+    color: #111;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.btn-escolher:hover{
+    background: #ddd;
+}
+
+/* ========================= */
+/* EDITAR PERFIL */
+/* ========================= */
+
+.editar-container{
+
+    width:100%;
+    max-width:650px;
+
+    margin:50px auto;
+
+    padding:40px;
+
+    background:white;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.editar-container h1{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    font-size:34px;
+
+    color:#111;
+}
+
+.form-editar{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.campo-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.campo-form label{
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+.input-editar{
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+.input-editar:focus{
+
+    border-color:#e60023;
+
+}
+
+.textarea-editar{
+
+    resize:none;
+
+    min-height:140px;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+.textarea-editar:focus{
+
+    border-color:#e60023;
+
+}
+
+.input-foto::file-selector-button{
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    background:#efefef;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.input-foto::file-selector-button:hover{
+
+    background:#ddd;
+
+}
+
+.btn-salvar{
+
+    border:none;
+
+    background:#e60023;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    padding:14px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.btn-salvar:hover{
+
+    background:#b6001c;
+
+    transform:scale(1.02);
+
+}
+
+.foto-editar-area{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-bottom:10px;
+}
+
+.foto-editar-preview{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+}
+
+.input-foto-escondido{
+    display:none;
+}
+
+.btn-trocar-foto{
+    background:#efefef;
+    color:#111;
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.btn-trocar-foto:hover{
+    background:#ddd;
+    transform:scale(1.03);
+}
+
+.post-perfil{
+    position:relative;
+}
+
+.post-perfil{
+    position: relative;
+}
+
+.post-perfil{
+    position: relative;
+}
+
+.form-excluir-foto{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.btn-excluir-foto{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    opacity:0;
+
+    transform:translateY(-10px);
+
+    transition:.25s;
+}
+
+.post-perfil:hover .btn-excluir-foto{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.btn-excluir-foto:hover{
+
+    background:#e60023;
+
+    color:white;
+
+    transform:scale(1.1);
+
+}
+
+/* ========================= */
+/* CADASTRO */
+/* ========================= */
+
+.popup h2{
+    font-size:32px;
+    color:#111;
+    margin-bottom:30px;
+}
+
+.label{
+    font-weight:600;
+    color:#444;
+    margin-bottom:8px;
+}
+
+.input{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border:2px solid #ddd;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    transition:.2s;
+
+    outline:none;
+
+}
+
+.input:focus{
+
+    border-color:#e60023;
+
+    box-shadow:0 0 0 4px rgba(230,0,35,.12);
+
+}
+
+.botao-login{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#e60023;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.botao-login:hover{
+
+    background:#b6001c;
+
+    transform:translateY(-2px);
+
+}
+
+.link-login{
+
+    margin-top:18px;
+
+    text-decoration:none;
+
+    color:#666;
+
+    font-size:15px;
+
+    transition:.2s;
+
+}
+
+.link-login:hover{
+
+    color:#e60023;
+
+}
+
+.pagina-cadastro{
+    min-height:100vh;
+
+    background-image: url("../fotos_site/fundo-login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }

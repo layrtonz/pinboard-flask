@@ -3,61 +3,59 @@
 {% block body %}
     {% include "navbar.html" %}
 
-<div class="busca-container">
-    <input
-        type="text"
-        id="buscaUsuario"
-        placeholder="Buscar usuários..."
-        autocomplete="off"
-    >
+    <div class="busca-container">
+        <input
+            type="text"
+            id="buscaUsuario"
+            placeholder="Buscar usuários..."
+            autocomplete="off"
+        >
 
-    <div id="sugestoesUsuarios" class="sugestoes"></div>
-</div>
+        <div id="sugestoesUsuarios" class="sugestoes"></div>
+    </div>
 
-<div class="feed-container">
+    <div class="feed-container feed-geral">
+            {% for foto in fotos %}
+            <a href="{{ url_for('perfil', id_usuario=foto.id_usuario) }}" class="post">
+                <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}">
+            </a>
+        {% endfor %}
+    </div>
 
-    {% for foto in fotos %}
-    <a href="{{ url_for('perfil', id_usuario=foto.id_usuario)}}" class="post">
-        <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}">
-    </a>
-    {% endfor %}
+    <script>
+        const usuarios = [
+            {% for usuario in usuarios %}
+            {
+                username: "{{ usuario.username }}",
+                perfil: "{{ url_for('perfil', id_usuario=usuario.id) }}"
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ];
 
-</div>
+        const input = document.getElementById("buscaUsuario");
+        const sugestoes = document.getElementById("sugestoesUsuarios");
 
-<script>
-const usuarios = [
-    {% for usuario in usuarios %}
-    {
-        username: "{{ usuario.username }}",
-        perfil: "{{ url_for('perfil', id_usuario=usuario.id) }}"
-    }{% if not loop.last %},{% endif %}
-    {% endfor %}
-];
+        input.addEventListener("input", function () {
+            const texto = this.value.toLowerCase();
 
-const input = document.getElementById("buscaUsuario");
-const sugestoes = document.getElementById("sugestoesUsuarios");
+            sugestoes.innerHTML = "";
 
-input.addEventListener("input", function() {
-    const texto = this.value.toLowerCase();
+            if (texto.length === 0) {
+                return;
+            }
 
-    sugestoes.innerHTML = "";
-
-    if (texto.length === 0){
-        return;
-    }
-
-    usuarios
-        .filter(usuario =>
-            usuario.username.toLowerCase().includes(texto)
-        )
-        .forEach(usuario => {
-            sugestoes.innerHTML += `
-                <a href="${usuario.perfil}" class="sugestao-usuario">
-                    ${usuario.username}
-                </a>
-            `;
+            usuarios
+                .filter(usuario =>
+                    usuario.username.toLowerCase().includes(texto)
+                )
+                .forEach(usuario => {
+                    sugestoes.innerHTML += `
+                        <a href="${usuario.perfil}" class="sugestao-usuario">
+                            ${usuario.username}
+                        </a>
+                    `;
+                });
         });
-});
-</script>
+    </script>
 
 {% endblock %}

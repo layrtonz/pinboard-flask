@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Editar Perfil
+{% endblock %}
+
+{% block body %}
+{% include "navbar.html" %}
+
+<div class="editar-container">
+
+    <h1>Editar Perfil</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="form-editar">
+
+        {{ form.csrf_token }}
+
+        <div class="foto-editar-area">
+            <img
+                src="{{ url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil)) }}"
+                class="foto-editar-preview"
+            >
+
+            <label for="foto_perfil" class="btn-trocar-foto">
+                Trocar foto
+            </label>
+
+            {{ form.foto_perfil(id="foto_perfil", class="input-foto-escondido") }}
+        </div>
+
+        <div class="campo-form">
+            {{ form.username.label }}
+            {{ form.username(class="input-editar") }}
+        </div>
+
+        <div class="campo-form">
+            {{ form.bio.label }}
+            {{ form.bio(class="textarea-editar", rows="5") }}
+        </div>
+
+        {{ form.botao_submit(class="btn-salvar") }}
+
+    </form>
+
+</div>
+
+{% endblock %}

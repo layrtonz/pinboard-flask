@@ -1,34 +1,62 @@
+<div class="pagina-cadastro"> 
+{% extends "base.html" %}
+
+{% block titulo %}
+Criar Conta
+{% endblock %}
+
 {% block body %}
+
 <div class="container">
+
+    <img class="bg-imagem-pinterest"
+         src="{{ url_for('static', filename='img/fundo-login.png') }}">
+
     <div class="container-popup">
+
         <div class="popup">
-            <h2>Criar conta</h2>
+
+            <h2>Criar Conta</h2>
 
             <form method="POST">
+
                 {{ form.csrf_token }}
 
-                {{ form.email.label() }}
-                {{ form.email(class="input") }}
+                <div class="div-input">
+                    <div class="label">{{ form.email.label }}</div>
+                    {{ form.email(class="input") }}
+                </div>
 
-                {{ form.username.label() }}
-                {{ form.username(class="input") }}
+                <div class="div-input">
+                    <div class="label">{{ form.username.label }}</div>
+                    {{ form.username(class="input") }}
+                </div>
 
-                {{ form.senha.label() }}
-                {{ form.senha(class="input") }}
+                <div class="div-input">
+                    <div class="label">{{ form.senha.label }}</div>
+                    {{ form.senha(class="input") }}
+                </div>
 
-                {{ form.confirmacao_senha.label() }}
-                {{ form.confirmacao_senha(class="input") }}
+                <div class="div-input">
+                    <div class="label">{{ form.confirmacao_senha.label }}</div>
+                    {{ form.confirmacao_senha(class="input") }}
+                </div>
 
-                {{ form.botao_confirmacao(class="botao-login") }}
+                <div class="div-botao">
+                    {{ form.botao_confirmacao(class="botao-login") }}
+
+                    <a href="{{ url_for('homepage') }}" class="link-login">
+                        Já possui uma conta? Faça login
+                    </a>
+                </div>
+
             </form>
-                {% for erro in form.confirmacao_senha.errors %}
-                        <p style="color: red;">{{ erro }}</p>
-                {% endfor %}
 
-            <a href="{{ url_for('homepage') }}">
-                Já tem uma conta? Faça login
-            </a>
         </div>
+
     </div>
+
 </div>
+
 {% endblock %}
+</div>
