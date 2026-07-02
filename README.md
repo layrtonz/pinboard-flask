@@ -8,8 +8,8 @@ Clone do Pinterest desenvolvido com Flask, permitindo que usuários criem contas
 
 - 🔐 Cadastro de usuários
 - 🔑 Login e logout
-- 👤 Página de perfil por usuário
-- 🖼️ Estrutura para compartilhamento de imagens
+- 👤 Página de perfil por usuário/Alteração de Foto de Perfil e Bio
+- 🖼️ Estrutura para compartilhamento de imagens/Possibilidade de Excluir fotos
 - 🛡️ Proteção de rotas com autenticação
 
 ---
